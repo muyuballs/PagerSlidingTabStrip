@@ -342,10 +342,12 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 			lineRight = (currentPositionOffset * nextTabRight + (1f - currentPositionOffset) * lineRight);
 		}
 		
-		if (indicatorAlignTabTextLeftRight) {
+		if (indicatorOverflowTabText > 0 || indicatorAlignTabTextLeftRight) {
 			if (currentTab instanceof TextView) {
 				Paint p = ((TextView) currentTab).getPaint();
-				float textLength = p.measureText(((TextView)currentTab).getText().toString().toUpperCase());
+				String text = ((TextView)currentTab).getText().toString();
+				text = textAllCaps ? text.toUpperCase(locale) : text;
+				float textLength = p.measureText(text);
 				indicatorMarginLeftRight = (int) ((currentTab.getWidth() - textLength) / 2 - indicatorOverflowTabText);
 			}
 		}
