@@ -1,6 +1,6 @@
 # Android PagerSlidingTabStrip
 
-NEW UPDATE
+## NEW UPDATE
 ====
 ```Java
 public static final int INDICATOR_MODE_UNDERLINE = 0x1;
@@ -9,7 +9,7 @@ public static final int INDICATOR_MODE_BACKGROUND = 0x2;
 * INDICATOR_MODE_UNDERLINE是原来的下划线的那种指示器
 * INDICATOR_MODE_BACKGROUND是新增的圆角矩形背景的指示器
 
-----
+--
 ![](https://github.com/flyfly121/PagerSlidingTabStrip/blob/master/example_small.png)
 
 ====
