@@ -26,6 +26,9 @@ tabs.setIndicatorMode(PagerSlidingTabStrip.INDICATOR_MODE_BACKGROUND);
 * 第二个是指示器Indicator的宽与TabText的宽相等，也就是alignLeft & alignRight
 * 第三个是指示器Indicator的宽超出TabText的宽的距离
 
+--
+![](https://github.com/flyfly121/PagerSlidingTabStrip/blob/master/important_information.png)
+
 ====
 
 Interactive paging indicator widget, compatible with the `ViewPager` from the 
