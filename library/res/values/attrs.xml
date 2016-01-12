@@ -8,6 +8,7 @@
         <attr name="pstsIndicatorHeight" format="dimension" />
         <attr name="pstsIndicatorMarginLeftRight" format="dimension" />
         <attr name="pstsIndicatorAlignTabTextLeftRight" format="boolean" />
+        <attr name="pstsIndicatorOverflowTabText" format="dimension" />
         <attr name="pstsUnderlineHeight" format="dimension" />
         <attr name="pstsDividerPadding" format="dimension" />
         <attr name="pstsTabPaddingLeftRight" format="dimension" />
