@@ -16,7 +16,7 @@ public static final int INDICATOR_MODE_BACKGROUND = 0x2;
 tabs.setIndicatorMode(PagerSlidingTabStrip.INDICATOR_MODE_BACKGROUND);
 ```
 ====
-添加了几个新属性：
+原来下划线那种形式的指示器添加了几个新属性（请注意下面的图片，解释了几个关键词）：
 ```xml
 <attr name="pstsIndicatorMarginLeftRight" format="dimension" />
 <attr name="pstsIndicatorAlignTabTextLeftRight" format="boolean" />
