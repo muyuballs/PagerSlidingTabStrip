@@ -455,6 +455,31 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 		return indicatorHeight;
 	}
 
+	public int getIndicatorMarginLeftRight() {
+		return indicatorMarginLeftRight;
+	}
+
+	public void setIndicatorMarginLeftRight(int indicatorMarginLeftRight) {
+		this.indicatorMarginLeftRight = indicatorMarginLeftRight;
+	}
+
+	public boolean isIndicatorAlignTabTextLeftRight() {
+		return indicatorAlignTabTextLeftRight;
+	}
+
+	public void setIndicatorAlignTabTextLeftRight(
+			boolean indicatorAlignTabTextLeftRight) {
+		this.indicatorAlignTabTextLeftRight = indicatorAlignTabTextLeftRight;
+	}
+
+	public int getIndicatorBgPadding() {
+		return indicatorBgPadding;
+	}
+
+	public void setIndicatorBgPadding(int indicatorBgPadding) {
+		this.indicatorBgPadding = indicatorBgPadding;
+	}
+	
 	public void setUnderlineColor(int underlineColor) {
 		this.underlineColor = underlineColor;
 		invalidate();
