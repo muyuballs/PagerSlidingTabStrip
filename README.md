@@ -8,6 +8,7 @@
 * 第一个是指示器Indicator的左右边距
 * 第二个是指示器Indicator的宽与TabText的宽相等，也就是alignLeft & alignRight
 
+=======================================
 
 Interactive paging indicator widget, compatible with the `ViewPager` from the 
 Android Support Library. 
