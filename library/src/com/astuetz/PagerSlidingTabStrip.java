@@ -125,7 +125,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 		scrollOffset = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, scrollOffset, dm);
 		indicatorHeight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, indicatorHeight, dm);
 		indicatorMarginLeftRight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, indicatorMarginLeftRight, dm);
-		indicatorAlignTabTextLeftRight = a.getBoolean(R.styleable.PagerSlidingTabStrip_pstsIndicatorAlignTabTextLeftRight, indicatorAlignTabTextLeftRight);
+		indicatorOverflowTabText = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, indicatorOverflowTabText, dm);
 		underlineHeight = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, underlineHeight, dm);
 		dividerPadding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dividerPadding, dm);
 		tabPadding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, tabPadding, dm);
