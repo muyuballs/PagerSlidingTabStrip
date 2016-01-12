@@ -84,6 +84,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 	private int indicatorHeight = 8;
 	private int indicatorMarginLeftRight = 0;
 	private boolean indicatorAlignTabTextLeftRight = false;
+	private int indicatorOverflowTabText = 0;
 	private int underlineHeight = 2;
 	private int dividerPadding = 12;
 	private int tabPadding = 24;
@@ -149,6 +150,8 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 		dividerColor = a.getColor(R.styleable.PagerSlidingTabStrip_pstsDividerColor, dividerColor);
 		indicatorHeight = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsIndicatorHeight, indicatorHeight);
 		indicatorMarginLeftRight = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsIndicatorMarginLeftRight, indicatorMarginLeftRight);
+		indicatorAlignTabTextLeftRight = a.getBoolean(R.styleable.PagerSlidingTabStrip_pstsIndicatorAlignTabTextLeftRight, indicatorAlignTabTextLeftRight);
+		indicatorOverflowTabText = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsIndicatorOverflowTabText, indicatorOverflowTabText);
 		underlineHeight = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsUnderlineHeight, underlineHeight);
 		dividerPadding = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsDividerPadding, dividerPadding);
 		tabPadding = a.getDimensionPixelSize(R.styleable.PagerSlidingTabStrip_pstsTabPaddingLeftRight, tabPadding);
@@ -343,7 +346,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 			if (currentTab instanceof TextView) {
 				Paint p = ((TextView) currentTab).getPaint();
 				float textLength = p.measureText(((TextView)currentTab).getText().toString().toUpperCase());
-				indicatorMarginLeftRight = (int) ((currentTab.getWidth() - textLength) / 2);
+				indicatorMarginLeftRight = (int) ((currentTab.getWidth() - textLength) / 2 - indicatorOverflowTabText);
 			}
 		}
 		// left and right changed
