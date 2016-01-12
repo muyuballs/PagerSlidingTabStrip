@@ -3,8 +3,8 @@
 添加了两个新属性：
 ```xml
 <attr name="pstsIndicatorMarginLeftRight" format="dimension" />
-<attr name="pstsIndicatorOverflowTabText" format="dimension" />
 <attr name="pstsIndicatorAlignTabTextLeftRight" format="boolean" />
+<attr name="pstsIndicatorOverflowTabText" format="dimension" />
 ```
 * 第一个是指示器Indicator的左右边距
 * 第二个是指示器Indicator的宽与TabText的宽相等，也就是alignLeft & alignRight
