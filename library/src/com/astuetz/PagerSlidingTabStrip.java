@@ -53,9 +53,12 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 	private static final int[] ATTRS = new int[] {
 		android.R.attr.textSize,
 		android.R.attr.textColor
-    };
+    	};
 	// @formatter:on
 
+	public static final int INDICATOR_MODE_UNDERLINE = 0x1;
+	public static final int INDICATOR_MODE_BACKGROUND = 0x2;
+	
 	private LinearLayout.LayoutParams defaultTabLayoutParams;
 	private LinearLayout.LayoutParams expandedTabLayoutParams;
 
@@ -72,7 +75,8 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
 	private Paint rectPaint;
 	private Paint dividerPaint;
-
+	private RectF indicatorRectF;
+	
 	private int indicatorColor = 0xFF666666;
 	private int underlineColor = 0x1A000000;
 	private int dividerColor = 0x1A000000;
@@ -85,6 +89,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 	private int indicatorMarginLeftRight = 0;
 	private boolean indicatorAlignTabTextLeftRight = false;
 	private int indicatorOverflowTabText = 0;
+	private int indicatorBgPadding = 10;
 	private int underlineHeight = 2;
 	private int dividerPadding = 12;
 	private int tabPadding = 24;
@@ -131,6 +136,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 		tabPadding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, tabPadding, dm);
 		dividerWidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dividerWidth, dm);
 		tabTextSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, tabTextSize, dm);
+		indicatorBgPadding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, indicatorBgPadding, dm);
 
 		// get system attrs (android:textSize and android:textColor)
 
@@ -169,6 +175,8 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 		dividerPaint = new Paint();
 		dividerPaint.setAntiAlias(true);
 		dividerPaint.setStrokeWidth(dividerWidth);
+
+		indicatorRectF = new RectF();
 
 		defaultTabLayoutParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
 		expandedTabLayoutParams = new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 1.0f);
@@ -342,18 +350,29 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 			lineRight = (currentPositionOffset * nextTabRight + (1f - currentPositionOffset) * lineRight);
 		}
 		
+		Paint p = ((TextView) currentTab).getPaint();
+		String text = ((TextView)currentTab).getText().toString();
+		text = textAllCaps ? text.toUpperCase(locale) : text;
+		float textLength = p.measureText(text);
+		
 		if (indicatorOverflowTabText > 0 || indicatorAlignTabTextLeftRight) {
 			if (currentTab instanceof TextView) {
-				Paint p = ((TextView) currentTab).getPaint();
-				String text = ((TextView)currentTab).getText().toString();
-				text = textAllCaps ? text.toUpperCase(locale) : text;
-				float textLength = p.measureText(text);
+				// minus the length of indicatorOverflowTabText
 				indicatorMarginLeftRight = (int) ((currentTab.getWidth() - textLength) / 2 - indicatorOverflowTabText);
 			}
 		}
+		
 		// left and right changed
-		canvas.drawRect(lineLeft + indicatorMarginLeftRight, height - indicatorHeight, lineRight - indicatorMarginLeftRight, height, rectPaint);
-
+		if (indicatorMode == INDICATOR_MODE_UNDERLINE) {
+			canvas.drawRect(lineLeft + indicatorMarginLeftRight, height - indicatorHeight, lineRight - indicatorMarginLeftRight, height, rectPaint);
+		} else if (indicatorMode == INDICATOR_MODE_BACKGROUND) {
+			indicatorRectF.left = lineLeft + (currentTab.getWidth() - textLength) / 2 - indicatorBgPadding;
+			indicatorRectF.top = indicatorHeight;
+			indicatorRectF.right = lineRight - (currentTab.getWidth() - textLength) / 2 + indicatorBgPadding;
+			indicatorRectF.bottom = height - indicatorHeight;
+			float r = (lineRight - 2 * indicatorHeight) / 2;
+			canvas.drawRoundRect(indicatorRectF, r, r, rectPaint);
+		}
 		// draw underline
 
 		rectPaint.setColor(underlineColor);
@@ -405,6 +424,14 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 
 	}
 
+	public int getIndicatorMode() {
+		return indicatorMode;
+	}
+	
+	public void setIndicatorMode(int indicatorMode) {
+		this.indicatorMode = indicatorMode;
+	}
+	
 	public void setIndicatorColor(int indicatorColor) {
 		this.indicatorColor = indicatorColor;
 		invalidate();
