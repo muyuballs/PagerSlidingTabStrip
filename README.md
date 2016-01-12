@@ -1,7 +1,6 @@
 # Android PagerSlidingTabStrip
 
 ## NEW UPDATE
-====
 ```Java
 public static final int INDICATOR_MODE_UNDERLINE = 0x1;
 public static final int INDICATOR_MODE_BACKGROUND = 0x2;
@@ -12,6 +11,10 @@ public static final int INDICATOR_MODE_BACKGROUND = 0x2;
 --
 ![](https://github.com/flyfly121/PagerSlidingTabStrip/blob/master/example_small.png)
 
+## HOW TO USE
+```Java
+tabs.setIndicatorMode(PagerSlidingTabStrip.INDICATOR_MODE_BACKGROUND);
+```
 ====
 添加了几个新属性：
 ```xml
