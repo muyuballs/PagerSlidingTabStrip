@@ -1,9 +1,16 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
-
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/action_contact"
         android:icon="@drawable/ic_action_user"
-        android:showAsAction="ifRoom"
-        android:title="@string/action_contact"/>
-
+        android:showAsAction="ifRoom|collapseActionView"
+        android:title="@string/action_contact" />
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/style_under_line"
+            android:checked="true"
+            android:title="@string/style_under_line" />
+        <item
+            android:id="@+id/style_background"
+            android:title="@string/style_background" />
+    </group>
 </menu>

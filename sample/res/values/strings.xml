@@ -3,5 +3,7 @@
 
     <string name="app_name">PagerSlidingTabStrip</string>
     <string name="action_contact">Contact</string>
-
+    <string name="indicator_style">Style</string>
+    <string name="style_under_line">UNDERLINE</string>
+    <string name="style_background">BACKGROUND</string>
 </resources>
