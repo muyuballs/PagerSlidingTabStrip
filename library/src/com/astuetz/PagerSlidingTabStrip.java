@@ -256,6 +256,9 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
         CheckedTextView tab = new CheckedTextView(getContext());
         tab.setText(title);
         tab.setGravity(Gravity.CENTER);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            tab.setTextAlignment(TEXT_ALIGNMENT_CENTER);
+        }
         tab.setSingleLine();
 
         addTab(position, tab);
